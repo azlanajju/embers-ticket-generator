@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="qrcode.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <h1>QR Code Generator</h1>
+<div class="container">
+
+	<form>
+		<label for="college-name">College name:</label><br>
+		<input  value="aaa" type="text" id="college-name" name="college-name" required><br>
+		<label for="team-name">Team name:</label><br>
+		<input value="aaa"  type="text" id="team-name" name="team-name" required><br>
+		<label for="team-id">Team ID:</label><br>
+		<input value="aaa"  type="text" id="team-id" name="team-id" required><br>
+		<label for="team-members">Team members:</label><br>
+		<textarea  id="team-members" name="team-members" required>value="aaa" </textarea><br>
+		<button class="btn" type="button" onclick="generateQR()">Generate QR Code</button>
+	  </form>
+</div>
+  <div class="qrcode" id="qrcode"></div>
+<div   class="ticket">
+
+<div id="teamName" class="teamName"></div>
+<div id="teamID" class="teamID"> </div>
+<div class="teamMembers">
+	<p>teamMembers:</p>
+<pre id="teamM">
+
+</pre></div>
+	<img src="ticket.png" alt="">
+
+</div>
+  <script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      width : 200,
+      height : 200
+    });
+
+	function generateQR () {		
+  var collegeName = document.getElementById("college-name").value;
+  var teamName = document.getElementById("team-name").value;
+  var teamId = document.getElementById("team-id").value;
+  var teamMembers = document.getElementById("team-members").value;
+  var url = "https://embedclub.org/events/index.html";
+  var text = "College Name: " + collegeName + "\n" +
+             "Team Name: " + teamName + "\n" +
+             "Team ID: " + teamId + "\n" +
+             "Team Members: " + teamMembers + "\n" +
+             "URL: " + url;
+  
+  qrcode.makeCode(text);
+  document.getElementById('teamID').innerHTML= teamId;
+  document.getElementById('teamName').innerHTML= teamName;
+  document.getElementById('teamM').innerHTML= teamMembers;
+
+
+}
+
+
+  </script>
+</body>
+</html>

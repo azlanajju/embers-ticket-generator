@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Ticket</title>
+  <style>
+    /* CSS styles here */
+  </style>
+</head>
+<body>
+  <div class="ticket">
+    <h1>Event Ticket</h1>
+    <div class="row">
+      <div class="col-6">
+        <div class="label">College Name</div>
+        <div class="value" id="college-name"></div>
+      </div>
+      <div class="col-6">
+        <div class="label">Team Name</div>
+        <div class="value" id="team-name"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="label">Team ID</div>
+        <div class="value" id="team-id"></div>
+      </div>
+      <div class="col-6">
+        <div class="label">Team Members</div>
+        <div class="value" id="team-members"></div>
+      </div>
+    </div>
+    <div class="qr-code">
+      <canvas id="qr-canvas"></canvas>
+    </div>
+  </div>
+
+  <script type="module">
+    import QrScanner from './qr-scanner.min.js'; // replace with the actual path to qr-scanner.min.js
+
+    // get the QR code data from the URL query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const qrData = urlParams.get('data');
+
+    // split the QR code data into lines
+    const lines = qrData.split('\n');
+
+    // extract the ticket details from the lines
+    const collegeName = lines[0].substring(14);
+    const teamName = lines[1].substring(12);
+    const teamId = lines[2].substring(10);
+    const teamMembers = lines[3].substring(14);
+
+    // populate the ticket details on the page
+    document.getElementById('college-name').textContent = collegeName;
+    document.getElementById('team-name').textContent = teamName;
+    document.getElementById('team-id').textContent = teamId;
+    document.getElementById('team-members').textContent = teamMembers;
+
+    // set up the QR code
+    // set up the QR code
+    const qrCanvas = document.getElementById('qr-canvas');
+    const qrContext = qrCanvas.getContext('2d');
+    qrCanvas.width = qrCanvas.height = 256;
+    const qrCode = new QrScanner(qrCanvas, result => {
+      qrCode.stop();
+    });
+    qrCode.start();
+    qrCode.setGrayscaleWeights(0.2, 0.8);
+
+    // display the QR code data
+    qrContext.fillStyle = '#FFFFFF';
+    qrContext.fillRect(0, 0, qrCanvas.width, qrCanvas.height);
+    qrContext.fillStyle = '#000000';
+    qrContext.font = '16px monospace';
+    qrContext.textAlign = 'center';
+    qrContext.fillText(qrData, qrCanvas.width / 2, qrCanvas.height / 2);
+  </script>
+</body>
+</html>

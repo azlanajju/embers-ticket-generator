@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .container {
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid red;
+    width: 50vw;
+  }
+  
+  h1 {
+    margin-top: 0;
+    font-size: 36px;
+    font-weight: normal;
+    text-align: center;
+    color: #444;
+  }
+  
+  form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  input[type="text"],
+  textarea {
+    display: block;
+    width: 48vw;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+  }
+  
+  button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  .ticket{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    margin-top: 100px;
+
+  }
+  .ticket img{
+    width: 70vw;
+    position: absolute; 
+    z-index: -1;
+    margin-bottom: 100px;
+
+ }
+
+.qrcode{
+width: 120px;
+ height: 120px; 
+ margin-top: 15px;
+ position: absolute;
+ bottom: -23vw;
+ left: 25vw;
+}
+.qrcode img{
+
+width: 120px;
+height: 120px; 
+}
+.teamName{
+  transform: rotate(270deg);
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  right: 22vw;
+  margin-bottom: 100px;
+  font-size: 25px;
+
+
+}
+.teamID{
+    transform: rotate(270deg);
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    right: 20vw;
+    margin-bottom: 100px;
+    font-size: 20px;
+}
+.teamMembers{
+    font-size: 15px;
+    margin-left: -160px;
+}
+.teamMembers p{
+    font-weight: bold;
+}
+#teamM{
+    margin-top: -10px;
+}
